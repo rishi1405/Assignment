@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Neosoft_RishiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="3" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PanNumber" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="DateOfJoinee" Type="date" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCities">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCountries">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStates">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__EmployeeM__CityI__6B24EA82">
+          <End Role="tblCities" Type="Self.tblCities" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__CityI__6FE99F9F">
+          <End Role="tblCities" Type="Self.tblCities" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__Count__693CA210">
+          <End Role="tblCountries" Type="Self.tblCountries" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__Count__70DDC3D8">
+          <End Role="tblCountries" Type="Self.tblCountries" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__State__6A30C649">
+          <End Role="tblStates" Type="Self.tblStates" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__State__71D1E811">
+          <End Role="tblStates" Type="Self.tblStates" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCities__State__4222D4EF">
+          <End Role="tblStates" Type="Self.tblStates" Multiplicity="0..1" />
+          <End Role="tblCities" Type="Self.tblCities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCities">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStates__Count__3F466844">
+          <End Role="tblCountries" Type="Self.tblCountries" Multiplicity="0..1" />
+          <End Role="tblStates" Type="Self.tblStates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblStates">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Neosoft_RishiModelStoreContainer">
+          <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStates" EntityType="Self.tblStates" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeM__CityI__6B24EA82" Association="Self.FK__EmployeeM__CityI__6B24EA82">
+            <End Role="tblCities" EntitySet="tblCities" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__CityI__6FE99F9F" Association="Self.FK__EmployeeM__CityI__6FE99F9F">
+            <End Role="tblCities" EntitySet="tblCities" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__Count__693CA210" Association="Self.FK__EmployeeM__Count__693CA210">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__Count__70DDC3D8" Association="Self.FK__EmployeeM__Count__70DDC3D8">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__State__6A30C649" Association="Self.FK__EmployeeM__State__6A30C649">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__State__71D1E811" Association="Self.FK__EmployeeM__State__71D1E811">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCities__State__4222D4EF" Association="Self.FK__tblCities__State__4222D4EF">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="tblCities" EntitySet="tblCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStates__Count__3F466844" Association="Self.FK__tblStates__Count__3F466844">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="tblStates" EntitySet="tblStates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Neosoft_RishiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PanNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfileImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfJoinee" Type="DateTime" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK__EmployeeM__CityI__6B24EA82" FromRole="EmployeeMaster" ToRole="tblCities" />
+          <NavigationProperty Name="tblCity1" Relationship="Self.FK__EmployeeM__CityI__6FE99F9F" FromRole="EmployeeMaster" ToRole="tblCities" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK__EmployeeM__Count__693CA210" FromRole="EmployeeMaster" ToRole="tblCountries" />
+          <NavigationProperty Name="tblCountry1" Relationship="Self.FK__EmployeeM__Count__70DDC3D8" FromRole="EmployeeMaster" ToRole="tblCountries" />
+          <NavigationProperty Name="tblState" Relationship="Self.FK__EmployeeM__State__6A30C649" FromRole="EmployeeMaster" ToRole="tblStates" />
+          <NavigationProperty Name="tblState1" Relationship="Self.FK__EmployeeM__State__71D1E811" FromRole="EmployeeMaster" ToRole="tblStates" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeMasters" Relationship="Self.FK__EmployeeM__CityI__6B24EA82" FromRole="tblCities" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="EmployeeMasters1" Relationship="Self.FK__EmployeeM__CityI__6FE99F9F" FromRole="tblCities" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="tblState" Relationship="Self.FK__tblCities__State__4222D4EF" FromRole="tblCities" ToRole="tblStates" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeMasters" Relationship="Self.FK__EmployeeM__Count__693CA210" FromRole="tblCountries" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="EmployeeMasters1" Relationship="Self.FK__EmployeeM__Count__70DDC3D8" FromRole="tblCountries" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="tblStates" Relationship="Self.FK__tblStates__Count__3F466844" FromRole="tblCountries" ToRole="tblStates" />
+        </EntityType>
+        <EntityType Name="tblState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeMasters" Relationship="Self.FK__EmployeeM__State__6A30C649" FromRole="tblStates" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="EmployeeMasters1" Relationship="Self.FK__EmployeeM__State__71D1E811" FromRole="tblStates" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="tblCities" Relationship="Self.FK__tblCities__State__4222D4EF" FromRole="tblStates" ToRole="tblCities" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK__tblStates__Count__3F466844" FromRole="tblStates" ToRole="tblCountries" />
+        </EntityType>
+        <Association Name="FK__EmployeeM__CityI__6B24EA82">
+          <End Role="tblCities" Type="Self.tblCity" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__CityI__6FE99F9F">
+          <End Role="tblCities" Type="Self.tblCity" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCities">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__Count__693CA210">
+          <End Role="tblCountries" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__Count__70DDC3D8">
+          <End Role="tblCountries" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__State__6A30C649">
+          <End Role="tblStates" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeM__State__71D1E811">
+          <End Role="tblStates" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCities__State__4222D4EF">
+          <End Role="tblStates" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="tblCities" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStates">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCities">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStates__Count__3F466844">
+          <End Role="tblCountries" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="tblStates" Type="Self.tblState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountries">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblStates">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Neosoft_RishiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployeeMasters" EntityType="Self.EmployeeMaster" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
+          <EntitySet Name="tblStates" EntityType="Self.tblState" />
+          <AssociationSet Name="FK__EmployeeM__CityI__6B24EA82" Association="Self.FK__EmployeeM__CityI__6B24EA82">
+            <End Role="tblCities" EntitySet="tblCities" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__CityI__6FE99F9F" Association="Self.FK__EmployeeM__CityI__6FE99F9F">
+            <End Role="tblCities" EntitySet="tblCities" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__Count__693CA210" Association="Self.FK__EmployeeM__Count__693CA210">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__Count__70DDC3D8" Association="Self.FK__EmployeeM__Count__70DDC3D8">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__State__6A30C649" Association="Self.FK__EmployeeM__State__6A30C649">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeM__State__71D1E811" Association="Self.FK__EmployeeM__State__71D1E811">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCities__State__4222D4EF" Association="Self.FK__tblCities__State__4222D4EF">
+            <End Role="tblStates" EntitySet="tblStates" />
+            <End Role="tblCities" EntitySet="tblCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStates__Count__3F466844" Association="Self.FK__tblStates__Count__3F466844">
+            <End Role="tblCountries" EntitySet="tblCountries" />
+            <End Role="tblStates" EntitySet="tblStates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Neosoft_RishiModelStoreContainer" CdmEntityContainer="Neosoft_RishiEntities">
+          <EntitySetMapping Name="EmployeeMasters">
+            <EntityTypeMapping TypeName="Neosoft_RishiModel.EmployeeMaster">
+              <MappingFragment StoreEntitySet="EmployeeMaster">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfJoinee" ColumnName="DateOfJoinee" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="Neosoft_RishiModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCities">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountries">
+            <EntityTypeMapping TypeName="Neosoft_RishiModel.tblCountry">
+              <MappingFragment StoreEntitySet="tblCountries">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStates">
+            <EntityTypeMapping TypeName="Neosoft_RishiModel.tblState">
+              <MappingFragment StoreEntitySet="tblStates">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
